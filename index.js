@@ -1,14 +1,15 @@
 const df = require('node-df');
 const nodemailer = require('nodemailer');
+const { env } = require('process');
 
 // SMTP Configuration
 const transporter = nodemailer.createTransport({
     host: 'mail.smtp2go.com',
-    port: 2525,
+    port: env.SMTP_PORT,
     secure: false, 
     auth: {
-        user: '',
-        pass: ''
+        user: env.SMTP_USER,
+        pass: env.SMTP_PASS
     }
 });
 
@@ -50,8 +51,8 @@ const checkDiskUsage = () => {
 
         if (alert) {
             const mailOptions = {
-                from: 'no-reply@gmail.com',
-                to: 'snowdenbill02@gmail.com',
+                from: env.SMTP_FROM,
+                to: env.SMTP_TO,
                 subject: 'Disk Usage Alert',
                 html: emailBody
             };
