@@ -4,7 +4,7 @@ const { env } = require('process');
 
 // SMTP Configuration
 const transporter = nodemailer.createTransport({
-    host: 'mail.smtp2go.com',
+    host: env.SMTP_HOST,
     port: env.SMTP_PORT,
     secure: false, 
     auth: {
