@@ -34,7 +34,7 @@ const checkDiskUsage = () => {
         `;
 
         response.forEach((disk) => {
-            if (disk.filesystem.indexOf('overlay2') === -1 && disk.mount.indexOf('tmpfs') === -1 && disk.mount.indexOf('cdrom') === -1 && disk.capacity >= 80) {
+            if (disk.filesystem.indexOf('overlay2') === -1 && disk.mount.indexOf('tmpfs') === -1 && disk.mount.indexOf('cdrom') === -1 && disk.capacity >= 0.80) {
                 alert = true;
                 emailBody += `
                     <tr>
@@ -51,7 +51,7 @@ const checkDiskUsage = () => {
         if (alert) {
             const mailOptions = {
                 from: 'no-reply@gmail.com',
-                to: '',
+                to: 'snowdenbill02@gmail.com',
                 subject: 'Disk Usage Alert',
                 html: emailBody
             };
